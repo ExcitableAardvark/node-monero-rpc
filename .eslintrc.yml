@@ -1,0 +1,5 @@
+---
+extends: standard
+rules:
+  valid-jsdoc: error
+  standard/no-callback-literal: off
