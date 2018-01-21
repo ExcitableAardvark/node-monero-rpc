@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/ExcitableAardvark/node-monero-rpc#readme",
   "dependencies": {
-    "jayson": "^2.0.5"
+    "jayson": "^2.0.5",
+    "request": "^2.83.0"
   },
   "devDependencies": {
     "eslint": "^4.16.0",
