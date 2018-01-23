@@ -25,6 +25,7 @@
       * [getAddress(callback)](#getaddresscallback)
       * [getBalance(callback)](#getbalancecallback)
       * [transfer(options, callback)](#transferoptions-callback)
+      * [getPayments(callback)](#getpaymentspaymentid-callback)
 * [Testing](#testing)
 * [Warning](#warning-1)
 * [License](#license)
@@ -291,6 +292,28 @@ wallet.transfer({
     if (err) return console.log(err)
     console.log(result.fee) // 48958481211
     console.log(result.tx_hash) // '985180f46863...'
+})
+```
+
+###### getPayments(paymentId, callback)
+
+Get a list of incoming payments using a given payment id.
+
+```js
+wallet.getPayments('4279257e...', (err, payments) => {
+    if (err) return console.log(err)
+    console.log(payments)
+    /*
+     * [
+     *     {
+     *         "amount": 10350000000000,
+     *         "block_height": 994327,
+     *         "payment_id": "4279257e0a2...",
+     *         "tx_hash": "c391089f5b1b02...",
+     *         "unlock_time": 0
+     *     }
+     * ]
+     */
 })
 ```
 
