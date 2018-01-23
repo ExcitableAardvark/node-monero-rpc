@@ -317,6 +317,18 @@ wallet.getPayments('4279257e...', (err, payments) => {
 })
 ```
 
+###### getRandomIntegratedAddress(callback)
+
+Generate a random integrated address.
+
+```js
+wallet.getRandomIntegratedAddress((err, result) => {
+    if (err) return console.log(err)
+    console.log(result.paymentId) // 'f89f4978b6304b7b'
+    console.log(result.address) // '46tFLJPaNyy...'
+})
+```
+
 ### Testing
 
 Code is linted with eslint and tested with Jest. Run `npm test` to lint and run
