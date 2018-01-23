@@ -1,6 +1,34 @@
 # node-monero-rpc
 > node wrapper for monero daemon and wallet rpc
 
+### Table of Contents
+
+* [Installation](#installation)
+* [Documentation](#documentation)
+  * [Daemon API](#daemon-api)
+    * [Initialisation](#initialisation)
+    * [Methods](#methods)
+      * [getLastBlockHeight(callback)](#getlastblockheightcallback)
+      * [getLastBlockHeader(callback)](#getlastblockheadercallback)
+      * [getLastBlockHeader(id, callback)](#getlastblockheaderid-callback)
+      * [getBlock(id, callback)](#getblockid-callback)
+      * [getBlockTemplate(address, reserved, callback)](#getblocktemplateaddress-reserved-callback)
+      * [submitBlock(blob, callback)](#submitblockblob-callback)
+      * [getKeyImagesSpent(keyImages, callback)](#getkeyimagesspentkeyimages-callback)
+      * [stop(callback)](#stopcallback)
+      * [getInfo(callback)](#getinfocallback)
+      * [isTestnet(callback)](#istestnetcallback)
+  * [Wallet API](#wallet-api)
+    * [Warning](#warning)
+    * [Initialisation](#initialisation-1)
+    * [Methods](#methods-1)
+      * [getAddress(callback)](#getaddresscallback)
+      * [getBalance(callback)](#getbalancecallback)
+      * [transfer(options, callback)](#transferoptions-callback)
+* [Testing](#testing)
+* [Warning](#warning-1)
+* [License](#license)
+
 ### Installation
 
     npm install --save monero-rpc
@@ -248,7 +276,7 @@ wallet.getBalance((err, balance) => {
 })
 ```
 
-##### transfer(options, callback)
+###### transfer(options, callback)
 
 Send Monero.
 
