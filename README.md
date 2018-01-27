@@ -26,6 +26,8 @@
       * [getBalance(callback)](#getbalancecallback)
       * [transfer(options, callback)](#transferoptions-callback)
       * [getPayments(callback)](#getpaymentspaymentid-callback)
+      * [getRandomIntegratedAddress(callback)](#getrandomintegratedaddresscallback)
+      * [getBulkPayments(paymentIds, height, callback)](#getbulkpaymentspaymentids-height-callback)
 * [Testing](#testing)
 * [Warning](#warning-1)
 * [License](#license)
@@ -326,6 +328,28 @@ wallet.getRandomIntegratedAddress((err, result) => {
     if (err) return console.log(err)
     console.log(result.paymentId) // 'f89f4978b6304b7b'
     console.log(result.address) // '46tFLJPaNyy...'
+})
+```
+
+###### getBulkPayments(paymentIds, height, callback)
+
+Get a list of payments using a list of payment ids from a given height.
+
+```js
+wallet.getBulkPayments(['4279257e0a2...'], 990000, (err, result) => {
+    if (err) return console.log(err)
+    console.log(result)
+    /*
+     * [
+     *     {
+     *         "amount": 10350000000000,
+     *         "block_height": 994327,
+     *         "payment_id": "4279257e0a2...",
+     *         "tx_hash": "c391089f5b1...",
+     *         "unlock_time": 0
+     *     }
+     * ]
+     */
 })
 ```
 
