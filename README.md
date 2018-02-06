@@ -364,6 +364,12 @@ This library is not complete. This library probably has bugs. ~~This library
 eats babies.~~ Don't use it unless you know what you're getting yourself into.
 See the GitHub issues for a list of features which are missing.
 
+### Projects using node-monero-rpc
+
+Feel free to create a pull request to add your own project.
+
+* [monerod_exporter](https://github.com/ExcitableAardvark/monerod_exporter) - Monerod Prometheus exporter
+
 ### License
 
 Released under the 3-Clause BSD License. See `LICENSE` for more information.
