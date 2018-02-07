@@ -30,6 +30,7 @@
       * [getBulkPayments(paymentIds, height, callback)](#getbulkpaymentspaymentids-height-callback)
 * [Testing](#testing)
 * [Warning](#warning-1)
+* [Projects using node-monero-rpc](#projects-using-node-monero-rpc)
 * [License](#license)
 
 ### Installation
