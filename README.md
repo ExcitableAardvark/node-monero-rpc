@@ -91,7 +91,7 @@ daemon.getLastBlockHeader((err, header) => {
 })
 ```
 
-###### getLastBlockHeader(id, callback)
+###### getBlockHeader(id, callback)
 
 Block header information can be retrieved using either a block's hash or height.
 
@@ -170,7 +170,7 @@ daemon.getBlockTemplate('46tFLJPaNyy...', 17, (err, template) => {
 Submit a block to the network.
 
 ```js
-daemon.getBlockTemplate('...', (err) => {
+daemon.submitBlock('...', (err) => {
     if (err) return console.log(err)
     console.log('hurray') // 'hurray'
 })
