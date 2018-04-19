@@ -59,8 +59,7 @@ const daemon = new Daemon('http://node.monero.hashvault.pro:18081') // or use a 
 Look up how many blocks are in the longest chain known to the node.
 
 ```js
-daemon.getLastBlockHeight((err, height) => {
-    if (err) return console.log(err)
+daemon.getLastBlockHeight().then(height => {
     console.log(height) // 993163
 })
 ```
@@ -70,8 +69,7 @@ daemon.getLastBlockHeight((err, height) => {
 Look up how many blocks are in the longest chain known to the node.
 
 ```js
-daemon.getLastBlockHeader((err, header) => {
-    if (err) return console.log(err)
+daemon.getLastBlockHeader().then(header => {
     console.log(header)
     /*
      * {
@@ -98,8 +96,7 @@ Block header information can be retrieved using either a block's hash or height.
 By height:
 
 ```js
-daemon.getBlockHeader(990793, (err, header) => {
-    if (err) return console.log(err)
+daemon.getBlockHeader(990793).then(header => {
     console.log(header)
     /*
      * {
@@ -122,8 +119,7 @@ daemon.getBlockHeader(990793, (err, header) => {
 By hash:
 
 ```js
-daemon.getBlockHeader('ac0f1e2262...', (err, header) => {
-    if (err) return console.log(err)
+daemon.getBlockHeader('ac0f1e2262...').then(header => {
     console.log(header)
     /*
      * {
@@ -148,8 +144,7 @@ daemon.getBlockHeader('ac0f1e2262...', (err, header) => {
 Full block information can be retrieved by either block height or hash, like with the block header calls.
 
 ```js
-daemon.getBlock('ac0f1e2262...', (err, block) => {
-    if (err) return console.log(err)
+daemon.getBlock('ac0f1e2262...').then(block => {
     console.log(block) // { ... }
 })
 ```
@@ -159,8 +154,7 @@ daemon.getBlock('ac0f1e2262...', (err, block) => {
 Get a new block template for mining.
 
 ```js
-daemon.getBlockTemplate('46tFLJPaNyy...', 17, (err, template) => {
-    if (err) return console.log(err)
+daemon.getBlockTemplate('46tFLJPaNyy...', 17).then(template => {
     console.log(template) // { ... }
 })
 ```
@@ -170,8 +164,7 @@ daemon.getBlockTemplate('46tFLJPaNyy...', 17, (err, template) => {
 Submit a block to the network.
 
 ```js
-daemon.getBlockTemplate('...', (err) => {
-    if (err) return console.log(err)
+daemon.submitBlock('...').then(result => {
     console.log('hurray') // 'hurray'
 })
 ```
@@ -181,8 +174,7 @@ daemon.getBlockTemplate('...', (err) => {
 Check if a key image is spent.
 
 ```js
-daemon.getKeyImagesSpent(['8d1bd818...', '7319134bf...'], (err, status) => {
-    if (err) return console.log(err)
+daemon.getKeyImagesSpent(['8d1bd818...', '7319134bf...']).then(status =>
     console.log(status) // [1, 1]
 })
 ```
@@ -190,8 +182,7 @@ daemon.getKeyImagesSpent(['8d1bd818...', '7319134bf...'], (err, status) => {
 ###### stop(callback)
 
 ```js
-daemon.stop((err) => {
-    if (err) return console.log(err)
+daemon.stop().then(() => {
     console.log(':(') // ':('
 })
 ```
@@ -200,8 +191,7 @@ daemon.stop((err) => {
 Get miscellaneous information about the state of this daemon and the network.
 
 ```js
-daemon.getInfo((err, info) => {
-    if (err) return console.log(err)
+daemon.getInfo().then(info => {
     console.log(info)
     /*
      * {
@@ -228,8 +218,7 @@ daemon.getInfo((err, info) => {
 Get miscellaneous information about the state of this daemon and the network.
 
 ```js
-daemon.isTestnet((err, testnet) => {
-    if (err) return console.log(err)
+daemon.isTestnet().then(testnet => {
     console.log(testnet) // false
 })
 ```
@@ -262,8 +251,7 @@ const wallet = new Wallet('http://localhost:18082')
 Get the wallet's address.
 
 ```js
-wallet.getAddress((err, address) => {
-    if (err) return console.log(err)
+wallet.getAddress().then(address => {
     console.log(address) // '46tFLJPaNyy...'
 })
 ```
@@ -273,8 +261,7 @@ wallet.getAddress((err, address) => {
 Get the wallet's balance.
 
 ```js
-wallet.getBalance((err, balance) => {
-    if (err) return console.log(err)
+wallet.getBalance(balance).then(balance => {
     console.log(balance.total) // 140000000000
     console.log(balance.unlocked) // 50000000000
 })
@@ -291,8 +278,7 @@ wallet.transfer({
     ],
     mixin: 5, // default 5
     priority: 0 // default 0
-}, (err, result) => {
-    if (err) return console.log(err)
+}).then(result) => {
     console.log(result.fee) // 48958481211
     console.log(result.tx_hash) // '985180f46863...'
 })
@@ -303,8 +289,7 @@ wallet.transfer({
 Get a list of incoming payments using a given payment id.
 
 ```js
-wallet.getPayments('4279257e...', (err, payments) => {
-    if (err) return console.log(err)
+wallet.getPayments('4279257e...').then(payments => {
     console.log(payments)
     /*
      * [
@@ -325,8 +310,7 @@ wallet.getPayments('4279257e...', (err, payments) => {
 Generate a random integrated address.
 
 ```js
-wallet.getRandomIntegratedAddress((err, result) => {
-    if (err) return console.log(err)
+wallet.getRandomIntegratedAddress().then(result => {
     console.log(result.paymentId) // 'f89f4978b6304b7b'
     console.log(result.address) // '46tFLJPaNyy...'
 })
@@ -337,8 +321,7 @@ wallet.getRandomIntegratedAddress((err, result) => {
 Get a list of payments using a list of payment ids from a given height.
 
 ```js
-wallet.getBulkPayments(['4279257e0a2...'], 990000, (err, result) => {
-    if (err) return console.log(err)
+wallet.getBulkPayments(['4279257e0a2...'], 990000).then(result => {
     console.log(result)
     /*
      * [
