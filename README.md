@@ -10,7 +10,7 @@
     * [Methods](#methods)
       * [getLastBlockHeight(callback)](#getlastblockheightcallback)
       * [getLastBlockHeader(callback)](#getlastblockheadercallback)
-      * [getLastBlockHeader(id, callback)](#getlastblockheaderid-callback)
+      * [getBlockHeader(id, callback)](#getblockheaderid-callback)
       * [getBlock(id, callback)](#getblockid-callback)
       * [getBlockTemplate(address, reserved, callback)](#getblocktemplateaddress-reserved-callback)
       * [submitBlock(blob, callback)](#submitblockblob-callback)
