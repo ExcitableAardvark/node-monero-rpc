@@ -289,7 +289,7 @@ wallet.transfer({
     destinations: [
         { address: '48vegnn...', amount: 10000000 }
     ],
-    mixin: 5, // default 5
+    mixin: 7, // default 7
     priority: 0 // default 0
 }, (err, result) => {
     if (err) return console.log(err)
