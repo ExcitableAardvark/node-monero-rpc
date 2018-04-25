@@ -10,7 +10,7 @@
     * [Methods](#methods)
       * [getLastBlockHeight(callback)](#getlastblockheightcallback)
       * [getLastBlockHeader(callback)](#getlastblockheadercallback)
-      * [getLastBlockHeader(id, callback)](#getlastblockheaderid-callback)
+      * [getBlockHeader(id, callback)](#getblockheaderid-callback)
       * [getBlock(id, callback)](#getblockid-callback)
       * [getBlockTemplate(address, reserved, callback)](#getblocktemplateaddress-reserved-callback)
       * [submitBlock(blob, callback)](#submitblockblob-callback)
@@ -25,6 +25,7 @@
       * [getAddress(callback)](#getaddresscallback)
       * [getBalance(callback)](#getbalancecallback)
       * [transfer(options, callback)](#transferoptions-callback)
+      * [splitTransfer(options, callback)](#splittransferoptions-callback)
       * [getPayments(callback)](#getpaymentspaymentid-callback)
       * [getRandomIntegratedAddress(callback)](#getrandomintegratedaddresscallback)
       * [getBulkPayments(paymentIds, height, callback)](#getbulkpaymentspaymentids-height-callback)
@@ -89,7 +90,7 @@ daemon.getLastBlockHeader().then(header => {
 })
 ```
 
-###### getLastBlockHeader(id, callback)
+###### getBlockHeader(id, callback)
 
 Block header information can be retrieved using either a block's hash or height.
 
@@ -276,11 +277,34 @@ wallet.transfer({
     destinations: [
         { address: '48vegnn...', amount: 10000000 }
     ],
-    mixin: 5, // default 5
+    mixin: 7, // default 7
     priority: 0 // default 0
 }).then(result) => {
     console.log(result.fee) // 48958481211
     console.log(result.tx_hash) // '985180f46863...'
+})
+```
+
+###### splitTransfer(options, callback)
+
+Send monero, and split into multiple transactions if required.
+
+```js
+wallet.splitTransfer({
+    destinations: [
+        { address: '48vegnn...', amount: 10000000 }
+    ],
+    mixin: 7, // default 7
+    priority: 0 // default 0
+}, (err, result) => {
+    if (err) return console.log(err)
+    console.log(result)
+    /*
+     * {
+     *     "fee_list": [48958481211],
+     *     "tx_hash_list": ['985180f46863...']
+     * }
+     */
 })
 ```
 
